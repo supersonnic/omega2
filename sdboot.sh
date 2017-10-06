@@ -21,11 +21,12 @@ mkdir /mnt/mmcblk0p1
 mount /dev/mmcblk0p1 /mnt/mmcblk0p1
 
 printf "\n${GREEN}Duplicating the overlay directory...${NC}\n"
-tar -C /overlay -cvf - . | tar -C /mnt/mmcblk0p1 -xf -
+tar -C /overlay -cf - . | tar -C /mnt/mmcblk0p1 -xf -
 umount /mnt/mmcblk0p1/
 
 printf "\n${GREEN}Finishing up...${NC}\n"
+#opkg install block-mount
 block detect > /etc/config/fstab
 sed -i '/enabled/s/0/1/g' /etc/config/fstab
 sed -i 's/mnt\/mmcblk0p1/overlay/g' /etc/config/fstab
-printf "\n${RED}DONE! Now reboot the system!${NC}"
+printf "\n${RED}DONE! Now reboot the system!${NC}\n"
