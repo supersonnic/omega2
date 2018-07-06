@@ -27,6 +27,7 @@ umount /mnt/mmcblk0p1/
 printf "\n${GREEN}Finishing up...${NC}\n"
 #opkg install block-mount
 block detect > /etc/config/fstab
+block detect > /etc/config/fstab
 sed -i '/enabled/s/0/1/g' /etc/config/fstab
 sed -i 's/mnt\/mmcblk0p1/overlay/g' /etc/config/fstab
 printf "\n${RED}DONE! Now reboot the system!${NC}\n"
