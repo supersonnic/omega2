@@ -9,11 +9,11 @@ NC='\033[0m' # No Color
 
 printf "\n${GREEN}Installing kmod...${NC}\n"
 opkg update
-opkg upgrade
+#opkg upgrade
 opkg install kmod-usb-storage-extras e2fsprogs kmod-fs-ext4
 
 printf "\n${GREEN}Formatting the SD card...${NC}\n"
-umount /tmp/mounts/SD-P1/
+umount /mnt/mmcblk0p1
 mkfs.ext4 /dev/mmcblk0p1
 
 printf "\n${GREEN}Mounting the SD card...${NC}\n" 
